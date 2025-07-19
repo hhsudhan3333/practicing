@@ -1,2 +1,45 @@
 const iplTicket = (name) => {
+console.log(`Hi ${name}, welcome to IPL Ticket Booking!`);
+};
+iplTicket("HARI")  //Arrow Function + Template Literal
+
+const Customer = {
+    'FirstName': 'HARI',
+    'PhoneNO':'5254552566',
+    'last Name':'Sudhan'
+}
+let {FirstName, PhoneNO} = Customer;
+console.log(`Name: ${FirstName},Phone No: ${PhoneNO}`);  //destructuring
+
+const StandA = ['A11','A25','A36']
+const StandB = ['B11','B25','B36']
+const StandC = ['C11','C25','C36']
+const availableSeats=[...StandA,...StandB,StandC]
+console.log(availableSeats) //Spread 
+
+function totalCost(...prices) {
+  let total = prices.reduce((sum, price) => sum + price);
+  console.log("Total: ₹" + total);
+}
+totalCost(1000, 1200, 800) //Rest
+
+function pay(amount) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      amount > 0 ? resolve("✅ Paid ₹" + amount) : reject("❌ Payment Failed");
+    }, 2000);
+  });
+}
+
+async function bookTicket() {
+  console.log("⏳ Processing...");
+  try {
+    const result = await pay(3000);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+bookTicket();
   
